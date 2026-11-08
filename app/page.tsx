@@ -3,9 +3,24 @@
 export default function Home() {
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    
-    
-  console.log("Follow-Up Form submitted");
+
+    const formData = new FormData(event.currentTarget);
+    const firstName = formData.get("firstName");
+    const lastName = formData.get("lastName");
+    const followUpDate = formData.get("followUpDate");
+    const amount = formData.get("amount");
+    const notes = formData.get("notes");
+
+    // Java script Object Creation 
+    const followUp = {
+      firstName,
+      lastName,
+      followUpDate,
+      amount,
+      notes,
+    }
+
+  console.log("Follow-up:", followUp);
   }
   return (
     <main className="min-h-screen bg-gray-100 p-8 text-gray-900">
@@ -18,6 +33,7 @@ export default function Home() {
           id="firstName"
           name="firstName"
           type="text"
+          required
           className="rounded-md border border-gray-300 bg-white p-2"
       />
       <label htmlFor="LastName">Last Name</label>
@@ -25,6 +41,7 @@ export default function Home() {
           id="lastName"
           name="lastName"
           type="text"
+          required
           className="rounded-md border border-gray-300 bg-white p-2"
       />
       <label htmlFor="FollowUpDate">Follow-Up Date</label>
@@ -32,6 +49,7 @@ export default function Home() {
           id="followUpDate"
           name="followUpDate"
           type="date"
+          required
           className="rounded-md border border-gray-300 bg-white p-2"
       />
       <label htmlFor="Amount">Amount</label>
@@ -47,6 +65,7 @@ export default function Home() {
         id="notes"
         name="notes"
         rows={4}
+        required
         className="rounded-md border border-gray-300 bg-white p-2"
       />
       <button 
