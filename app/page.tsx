@@ -1,10 +1,18 @@
+"use client";
+
 export default function Home() {
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    
+    
+  console.log("Follow-Up Form submitted");
+  }
   return (
     <main className="min-h-screen bg-gray-100 p-8 text-gray-900">
       <h1>Follow-Up App</h1>
       <p>Never Forget a Follow-Up</p>
 
-    <form className= "flex max-w-md flex-col gap-4">
+    <form onSubmit={handleSubmit} className= "flex max-w-md flex-col gap-4">
       <label htmlFor="firstName">First Name</label>
       <input 
           id="firstName"
